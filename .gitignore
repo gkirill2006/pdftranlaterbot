@@ -1,2 +1,5 @@
 .env
 git push -u origin main
+# Python
+__pycache__/
+*.py[cod]
