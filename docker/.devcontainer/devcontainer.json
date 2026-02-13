@@ -1,0 +1,16 @@
+{
+  "name": "Codemark Dev (Django)",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "backend",
+  "workspaceFolder": "/workspace",
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash"
+  },
+  "extensions": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "eamodio.gitlens"
+  ],
+  "postCreateCommand": "pip install -r /workspace/backend/requirements.txt",
+  "remoteUser": "root"
+}

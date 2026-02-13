@@ -1,0 +1,8 @@
+aiogram==3.4
+python-dotenv
+numpy==1.26.4
+Pillow
+moviepy==1.0.3
+openai>=1.40.0,<2.0.0
+PyMuPDF>=1.24.0
+reportlab>=4.2.0

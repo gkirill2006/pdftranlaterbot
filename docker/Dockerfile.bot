@@ -1,0 +1,14 @@
+FROM python:3.11-slim
+
+WORKDIR /workspace/telegrambot
+
+COPY telegrambot/requirements.txt .
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends ffmpeg \
+    && rm -rf /var/lib/apt/lists/* \
+    && pip install --no-cache-dir -r requirements.txt
+
+COPY telegrambot .
+
+CMD ["python", "-u", "bot.py"]

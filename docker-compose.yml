@@ -1,0 +1,16 @@
+services:
+  
+  bot:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.bot
+    container_name: pdftranslater
+    env_file: .env
+    volumes:
+      - .:/workspace
+    working_dir: /workspace/telegrambot
+    restart: always  
+      
+volumes:
+  pgdata:
+  static_volume:
