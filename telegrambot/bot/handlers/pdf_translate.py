@@ -4,6 +4,7 @@ from typing import Optional
 from uuid import uuid4
 
 from aiogram import Bot, F, Router
+from aiogram.filters import Command, CommandStart
 from aiogram.types import FSInputFile, Message
 
 from config import Settings
@@ -23,6 +24,17 @@ def create_pdf_router(settings: Settings) -> Router:
     router = Router(name="pdf_translate")
     openai_client = OpenAIClient(settings)
     pipeline = PDFPipeline(settings, openai_client)
+
+    @router.message(CommandStart())
+    @router.message(Command("help"))
+    async def handle_start(message: Message) -> None:
+        await message.answer(
+            "Здравствуйте!\n\n"
+            "Этот бот создан специально для компании Измеркон и помогает переводить "
+            "техническую документацию на русский язык.\n\n"
+            "Просто прикрепите PDF-файл и отправьте его в чат. "
+            "Через небольшое время вы получите готовый переведённый документ."
+        )
 
     @router.message(F.document)
     async def handle_pdf_document(message: Message, bot: Bot) -> None:
